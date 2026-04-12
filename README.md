@@ -52,31 +52,31 @@ $\tau_i$ (Temporal Anchor): Timestamp of the final transition.
 The framework employs an Unsupervised Isolation Forest model. By mapping signals into the $(\alpha, \tau)$ feature space, the AI target the "uncanny valley" of hardware activity. Malicious triggers—which are designed to be rare—display mathematically isolated, low-entropy signatures compared to the high-activity "cloud" of legitimate AES logic.
 
 Directory Structure
-
+```
 Project_HeeHaw/
 ├── rtl/             # Infected and Clean AES variants
 ├── tb/              # OOSV Classes (Generator, Driver, Env, Top)
 ├── scripts/         # Tcl automation (simulate_all.do)
 ├── sim/             # Execution folder (C-Generator & SV Simulation)
 └── activity_logs/   # Generated VCD profiles for ML analysis
-
+```
 
 Execution Guide (Mentor Server)
 
 1. Generate the Mathematical Truth
 
 Compile and run the C-model inside the sim/ folder:
-
+```
 gcc gen_test_case.c aes.c -o generate_vectors
 ./generate_vectors
-
+```
 
 2. Run the Automated Simulation Suite
 
 Run the batch simulation to generate VCDs for all 7 design variants:
-
+```
 vsim -c -do ../scripts/simulate_all.do
-
+```
 
 3. Analyze via ML Pipeline
 
