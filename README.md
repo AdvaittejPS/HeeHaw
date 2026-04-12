@@ -4,35 +4,80 @@ This repository contains the Machine Learning pipeline (Isolation Forest) design
 
 Click the **Open in Colab** button above to run the AI directly in your browser against the raw hardware switching data!
 
-# Unsupervised Anomaly Detection for Hardware Trojan Identification in Cryptographic Cores
+# Project Hee-Haw: Unsupervised ML for Stealthy Hardware Trojan Detection
 
-This repository implements a non-invasive, unsupervised machine learning framework designed to detect hardware-level malicious logic (Hardware Trojans) within an AES-128 cryptographic engine. The methodology leverages temporal entropy and switching activity analysis to isolate stealthy triggers without the requirement of a golden reference model.
+Project Hee-Haw is a non-invasive, architecture-agnostic security auditing framework designed to detect dormant Hardware Trojans (HT) hidden within digital IP cores. Utilizing an AES-128 cryptographic engine as the Device Under Test (DUT), this project leverages temporal Value Change Dump (VCD) activity profiling and Unsupervised Machine Learning (Isolation Forests) to identify malicious logic without requiring a trusted "Structural Golden Model."
 
-## Abstract
-The globalization of the semiconductor supply chain has introduced vulnerabilities via third-party IP (3PIP) and untrusted foundry access. Hardware Trojans (HT) are designed to remain dormant during standard functional verification, activating only under rare trigger conditions to leak sensitive data or degrade performance. This project utilizes an **Isolation Forest** algorithm to identify these anomalies by mapping the switching behavior of every logic gate into a two-dimensional feature space.
+## The Nomenclature: Why "Hee-Haw"?
 
-## Technical Architecture
+In hardware security, malicious logic insertions are termed "Trojans" because they disguise themselves within the legitimate "Horse" (the standard AES core). However, from a Machine Learning perspective, a Trojan that leaves a detectable mathematical footprint is not a stealthy warhorse—it is a donkey making a loud, intrusive noise in a high-entropy bitstream.
 
-### 1. Hardware Design and Trojan Injection
-The core is a standard AES-128 implementation written in SystemVerilog. Various Trojan variants were injected to test the robustness of the detection pipeline:
-* **Time-Bomb (Infected 04):** A sequential Trojan utilizing a counter to trigger a payload after a specified temporal threshold.
-* **FSM Hijack (Infected 05):** A stealthy transition-based Trojan that activates upon a specific "magic" input sequence.
-* **Combinational Leak (Infected 06):** A direct leakage path that XORs the internal state with a malicious constant upon a trigger condition.
+The name "Hee-Haw" reflects the reality that under rigorous mathematical auditing, a Trojan cannot remain silent; its anomalous structural and temporal signature "brays" its presence to the ML pipeline.
 
-### 2. Feature Extraction and Signal Processing
-The detection pipeline parses Value Change Dump (VCD) files generated from an OOP-based SystemVerilog testbench. For each signal $i$ in the netlist, a feature vector $V_i$ is constructed:
+## Technical Architecture & Methodology
+
+The framework operates on a dual-verification security architecture: Functional Verification (C-Model Truth) and Structural Verification (ML Pipeline).
+
+1. Hardware Threat Models
+
+The core is an AES-128 implementation in SystemVerilog. We engineered several stealthy threat models:
+
+FSM Hijack (Infected 05): A "Combination Lock" trigger that activates only upon receiving a specific sequence of three 128-bit plaintexts.
+
+Sequential Time-Bomb (Infected 04): A Trojan utilizing an internal counter to trigger a payload after exactly 1,500 clock cycles.
+
+Combinational Leak (Infected 06): A direct trigger that corrupts ciphertext when a specific 128-bit input state is detected.
+
+2. Functional Verification (Closed-Loop C-Model)
+
+To prove that an anomaly is a malicious payload, the environment utilizes a self-checking Object-Oriented SystemVerilog (OOSV) testbench.
+
+Golden Truth Generation: A native C-model (gen_test_case.c + aes.c) generates 2,000 high-entropy random test vectors. It calculates the absolute mathematical ciphertext and saves it to golden_vectors.txt.
+
+The Self-Checking Trap: The SV aes_generator reads these vectors. The aes_driver feeds the hardware and performs a real-time comparison. If a Trojan activates, the driver flags the mismatch in the console but continues the simulation (Observe & Report) to ensure the VCD file remains uncorrupted for the AI.
+
+3. Structural Verification (ML Pipeline)
+
+For structural auditing, the testbench generates massive VCD logs during the 2,000-packet stress test. A custom Python parser extracts a 2D feature vector $V_i$ for every logic gate:
+
+
 $$V_i = \begin{bmatrix} \alpha_i \\ \tau_i \end{bmatrix}$$
-where:
-* $\alpha_i$ (Switching Activity): The total number of signal transitions ($0 \to 1$ or $1 \to 0$) during the simulation interval.
-* $\tau_i$ (Temporal Anchor): The timestamp of the final transition observed for that specific wire.
 
-### 3. Machine Learning Pipeline (Isolation Forest)
-The framework employs an unsupervised Isolation Forest model, which isolates anomalies by randomly selecting a feature and then randomly selecting a split value between the maximum and minimum values of the selected feature.
-* **Contamination Factor ($c$):** Set to $0.02$ to account for the expected ratio of malicious/static logic within the 8,263 extracted signals.
-* **Blacklisting Heuristic:** To improve the signal-to-noise ratio (SNR), a heuristic filter is applied to remove known architectural outliers such as the clock tree, reset signals, and AES Round Constants (RCON).
+$\alpha_i$ (Switching Activity): Total signal transitions (entropy).
 
-## Repository Organization
-* `/rtl`: SystemVerilog source code for clean and infected AES-128 cores.
-* `/tb`: Object-Oriented SystemVerilog testbench utilizing stratified random stimulus.
-* `/activity_logs`: Gzip-compressed VCD files for various regression test cases.
-* `HeeHaw-ML-Pipeline.ipynb`: The integrated Python/Data Science environment for model training and visualization.
+$\tau_i$ (Temporal Anchor): Timestamp of the final transition.
+
+4. Anomaly Detection (Isolation Forest)
+
+The framework employs an Unsupervised Isolation Forest model. By mapping signals into the $(\alpha, \tau)$ feature space, the AI target the "uncanny valley" of hardware activity. Malicious triggers—which are designed to be rare—display mathematically isolated, low-entropy signatures compared to the high-activity "cloud" of legitimate AES logic.
+
+Directory Structure
+
+Project_HeeHaw/
+├── rtl/             # Infected and Clean AES variants
+├── tb/              # OOSV Classes (Generator, Driver, Env, Top)
+├── scripts/         # Tcl automation (simulate_all.do)
+├── sim/             # Execution folder (C-Generator & SV Simulation)
+└── activity_logs/   # Generated VCD profiles for ML analysis
+
+
+Execution Guide (Mentor Server)
+
+1. Generate the Mathematical Truth
+
+Compile and run the C-model inside the sim/ folder:
+
+gcc gen_test_case.c aes.c -o generate_vectors
+./generate_vectors
+
+
+2. Run the Automated Simulation Suite
+
+Run the batch simulation to generate VCDs for all 7 design variants:
+
+vsim -c -do ../scripts/simulate_all.do
+
+
+3. Analyze via ML Pipeline
+
+Upload the resulting VCDs from /activity_logs to the HeeHaw ML Pipeline (Google Colab) to visualize the isolated Trojan triggers on the 2D scatter plot.
