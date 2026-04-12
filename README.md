@@ -9,7 +9,7 @@ _Prepared for the Scripting Languages and Verification course instructed by Dr. 
 
 Project Hee-Haw is a non-invasive, architecture-agnostic security auditing framework designed to detect dormant Hardware Trojans (HT) hidden within digital IP cores. Utilizing an AES-128 cryptographic engine as the Device Under Test (DUT), this project leverages temporal Value Change Dump (VCD) activity profiling and Unsupervised Machine Learning (Isolation Forests) to identify malicious logic without requiring a trusted 'Structural Golden Model.'
 
-## The Nomenclature: Why 'Hee-Haw'?
+## Nomenclature: Why 'Hee-Haw'?
 
 In hardware security, malicious logic insertions are termed 'Trojans' because they disguise themselves within the legitimate 'Horse' (the standard AES core). However, from a Machine Learning perspective, a Trojan that leaves a detectable mathematical footprint is not a stealthy warhorse, it is a donkey making a loud, intrusive noise in a high-entropy bitstream.
 
