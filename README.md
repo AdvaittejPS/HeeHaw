@@ -7,13 +7,13 @@ Click the **Open in Colab** button above to run the AI directly in your browser 
 # Project Hee-Haw: Unsupervised ML for Stealthy Hardware Trojan Detection
 _Prepared for the Scripting Languages and Verification course instructed by Dr. Jyotishman Saikia._
 
-Project Hee-Haw is a non-invasive, architecture-agnostic security auditing framework designed to detect dormant Hardware Trojans (HT) hidden within digital IP cores. Utilizing an AES-128 cryptographic engine as the Device Under Test (DUT), this project leverages temporal Value Change Dump (VCD) activity profiling and Unsupervised Machine Learning (Isolation Forests) to identify malicious logic without requiring a trusted "Structural Golden Model."
+Project Hee-Haw is a non-invasive, architecture-agnostic security auditing framework designed to detect dormant Hardware Trojans (HT) hidden within digital IP cores. Utilizing an AES-128 cryptographic engine as the Device Under Test (DUT), this project leverages temporal Value Change Dump (VCD) activity profiling and Unsupervised Machine Learning (Isolation Forests) to identify malicious logic without requiring a trusted 'Structural Golden Model.'
 
-## The Nomenclature: Why "Hee-Haw"?
+## The Nomenclature: Why 'Hee-Haw'?
 
-In hardware security, malicious logic insertions are termed "Trojans" because they disguise themselves within the legitimate "Horse" (the standard AES core). However, from a Machine Learning perspective, a Trojan that leaves a detectable mathematical footprint is not a stealthy warhorse—it is a donkey making a loud, intrusive noise in a high-entropy bitstream.
+In hardware security, malicious logic insertions are termed 'Trojans' because they disguise themselves within the legitimate 'Horse' (the standard AES core). However, from a Machine Learning perspective, a Trojan that leaves a detectable mathematical footprint is not a stealthy warhorse,it is a donkey making a loud, intrusive noise in a high-entropy bitstream.
 
-The name "Hee-Haw" reflects the reality that under rigorous mathematical auditing, a Trojan cannot remain silent; its anomalous structural and temporal signature "brays" its presence to the ML pipeline.
+The name 'Hee-Haw' reflects the reality that under rigorous mathematical auditing, a Trojan cannot remain silent; its anomalous structural and temporal signature 'brays' its presence to the ML pipeline.
 
 ## Technical Architecture & Methodology
 
@@ -23,7 +23,7 @@ The framework operates on a dual-verification security architecture: Functional 
 
 The core is an AES-128 implementation in SystemVerilog. We engineered several stealthy threat models:
 
-FSM Hijack (Infected 05): A "Combination Lock" trigger that activates only upon receiving a specific sequence of three 128-bit plaintexts.
+FSM Hijack (Infected 05): A 'Combination Lock' trigger that activates only upon receiving a specific sequence of three 128-bit plaintexts.
 
 Sequential Time-Bomb (Infected 04): A Trojan utilizing an internal counter to trigger a payload after exactly 1,500 clock cycles.
 
@@ -50,7 +50,7 @@ $\tau_i$ (Temporal Anchor): Timestamp of the final transition.
 
 **4. Anomaly Detection (Isolation Forest)**
 
-The framework employs an Unsupervised Isolation Forest model. By mapping signals into the $(\alpha, \tau)$ feature space, the AI target the "uncanny valley" of hardware activity. Malicious triggers—which are designed to be rare—display mathematically isolated, low-entropy signatures compared to the high-activity "cloud" of legitimate AES logic.
+The framework employs an Unsupervised Isolation Forest model. By mapping signals into the $(\alpha, \tau)$ feature space, the AI target the 'uncanny valley' of hardware activity. Malicious triggers,which are designed to be rare-display mathematically isolated, low-entropy signatures compared to the high-activity 'cloud' of legitimate AES logic.
 
 Directory Structure
 ```
