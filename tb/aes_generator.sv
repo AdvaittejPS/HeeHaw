@@ -1,7 +1,7 @@
 class aes_generator;
 
     // The transaction packet we will be generating
-    rand aes_transaction trans;
+    aes_transaction trans;
     
     // The mailbox to send packets to the Driver
     mailbox gen2driv;
@@ -11,6 +11,9 @@ class aes_generator;
     
     // How many packets to generate (e.g., our 2000 cycle stress test)
     int repeat_count;
+    
+    // File pointer for reading our golden vectors
+    int file_handle; 
 
     // Constructor: gets the mailbox handle from the Environment
     function new(mailbox gen2driv);
@@ -19,20 +22,25 @@ class aes_generator;
 
     // The main task that generates the data
     task main();
+        // 1. Open the golden truth file (Local path since C code is run in sim folder)
+        file_handle = $fopen("golden_vectors.txt", "r");
+        if (!file_handle) begin
+            $fatal("Gen:: Could not open golden_vectors.txt! Did you run the C program?");
+        end
+
         repeat (repeat_count) begin
             trans = new();
             
-            // Randomize the packet. If it fails, throw a fatal error.
-            if (!trans.randomize()) begin
-                $fatal("Gen:: Transaction randomization failed!");
+            // 2. Read the hex strings: [Key] [Plaintext] [Ciphertext]
+            if ($fscanf(file_handle, "%h %h %h\n", trans.key, trans.state, trans.expected_out) != 3) begin
+                $fatal("Gen:: Failed to read vector from file! Reached EOF early?");
             end
             
-            // Uncomment the line below if you want to print every generated packet to the terminal
-            // trans.display("[ Generator ]");
-            
-            // Put the randomized packet into the mailbox
+            // Put the populated packet into the mailbox
             gen2driv.put(trans);
         end
+        
+        $fclose(file_handle);
         
         // Trigger the 'ended' event to tell the testbench we are finished generating
         -> ended;
