@@ -1,10 +1,13 @@
 class aes_transaction;
 
-    // 'rand' keyword tells the Generator to randomize these fields
-    rand bit [127:0] state;
-    rand bit [127:0] key;
+    // REMOVED 'rand' keyword because we are reading these from the C-generated file
+    bit [127:0] state;
+    bit [127:0] key;
     
-    // Output is not random; we observe it from the DUT
+    // The Golden Truth (from the C program)
+    bit [127:0] expected_out;
+    
+    // The actual output observed from the physical hardware
     bit [127:0] out;
 
     // Display function to print the transaction details nicely
@@ -12,9 +15,10 @@ class aes_transaction;
         $display("--------------------------------");
         $display("[%s]", name);
         $display("--------------------------------");
-        $display("State : %h", state);
-        $display("Key   : %h", key);
-        $display("Out   : %h", out);
+        $display("State    : %h", state);
+        $display("Key      : %h", key);
+        $display("Expected : %h", expected_out);
+        $display("Actual   : %h", out);
         $display("--------------------------------");
     endfunction
 
