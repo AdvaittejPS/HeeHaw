@@ -18,7 +18,7 @@ The name "Hee-Haw" reflects the reality that under rigorous mathematical auditin
 
 The framework operates on a dual-verification security architecture: Functional Verification (C-Model Truth) and Structural Verification (ML Pipeline).
 
-1. Hardware Threat Models
+**1. Hardware Threat Models**
 
 The core is an AES-128 implementation in SystemVerilog. We engineered several stealthy threat models:
 
@@ -28,7 +28,7 @@ Sequential Time-Bomb (Infected 04): A Trojan utilizing an internal counter to tr
 
 Combinational Leak (Infected 06): A direct trigger that corrupts ciphertext when a specific 128-bit input state is detected.
 
-2. Functional Verification (Closed-Loop C-Model)
+**2. Functional Verification (Closed-Loop C-Model)**
 
 To prove that an anomaly is a malicious payload, the environment utilizes a self-checking Object-Oriented SystemVerilog (OOSV) testbench.
 
@@ -36,7 +36,7 @@ Golden Truth Generation: A native C-model (gen_test_case.c + aes.c) generates 2,
 
 The Self-Checking Trap: The SV aes_generator reads these vectors. The aes_driver feeds the hardware and performs a real-time comparison. If a Trojan activates, the driver flags the mismatch in the console but continues the simulation (Observe & Report) to ensure the VCD file remains uncorrupted for the AI.
 
-3. Structural Verification (ML Pipeline)
+**3. Structural Verification (ML Pipeline)**
 
 For structural auditing, the testbench generates massive VCD logs during the 2,000-packet stress test. A custom Python parser extracts a 2D feature vector $V_i$ for every logic gate:
 
@@ -47,7 +47,7 @@ $\alpha_i$ (Switching Activity): Total signal transitions (entropy).
 
 $\tau_i$ (Temporal Anchor): Timestamp of the final transition.
 
-4. Anomaly Detection (Isolation Forest)
+**4. Anomaly Detection (Isolation Forest)**
 
 The framework employs an Unsupervised Isolation Forest model. By mapping signals into the $(\alpha, \tau)$ feature space, the AI target the "uncanny valley" of hardware activity. Malicious triggers—which are designed to be rare—display mathematically isolated, low-entropy signatures compared to the high-activity "cloud" of legitimate AES logic.
 
@@ -61,9 +61,9 @@ Project_HeeHaw/
 └── activity_logs/   # Generated VCD profiles for ML analysis
 ```
 
-Execution Guide (Mentor Server)
+## Execution Guide (Mentor Server)
 
-1. Generate the Mathematical Truth
+**1. Generate the Mathematical Truth**
 
 Compile and run the C-model inside the sim/ folder:
 ```
@@ -71,13 +71,13 @@ gcc gen_test_case.c aes.c -o generate_vectors
 ./generate_vectors
 ```
 
-2. Run the Automated Simulation Suite
+**2. Run the Automated Simulation Suite**
 
 Run the batch simulation to generate VCDs for all 7 design variants:
 ```
 vsim -c -do ../scripts/simulate_all.do
 ```
 
-3. Analyze via ML Pipeline
+**3. Analyze via ML Pipeline**
 
 Upload the resulting VCDs from /activity_logs to the HeeHaw ML Pipeline (Google Colab) to visualize the isolated Trojan triggers on the 2D scatter plot.
