@@ -1,0 +1,549 @@
+# do ../scripts/simulate_all.do
+# 
+#     {"../rtl/aes_128.sv"                  "clean_baseline.vcd"}
+#     {"../rtl/aes_128_direct_key_leak.sv"  "infected_01_direct_key.vcd"}
+#     {"../rtl/aes_128_lsb.sv"              "infected_02_lsb_leak.vcd"}
+#     {"../rtl/aes_timebomb_data.sv"        "infected_03_timebomb_data.vcd"}
+#     {"../rtl/aes_timebomb_keyleak.sv"     "infected_04_timebomb_key.vcd"}
+#     {"../rtl/aes_fsm.sv"                  "infected_05_fsm.vcd"}
+#     {"../rtl/aes_128_comb_data_leak.sv"   "infected_06_comb_leak.vcd"}
+# 
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:49:54 on Apr 12,2026
+# vlog -incr ../rtl/table.sv 
+# -- Compiling module table_lookup
+# -- Compiling module S4
+# -- Compiling module T
+# -- Compiling module S
+# -- Compiling module xS
+# 
+# Top level modules:
+# 	table_lookup
+# 	S4
+# End time: 15:49:54 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:49:54 on Apr 12,2026
+# vlog -incr ../rtl/round.sv 
+# -- Compiling module one_round
+# -- Compiling module final_round
+# 
+# Top level modules:
+# 	one_round
+# 	final_round
+# End time: 15:49:54 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:49:54 on Apr 12,2026
+# vlog -incr ../rtl/aes_128.sv 
+# -- Compiling module aes_128
+# -- Compiling module expand_key_128
+# 
+# Top level modules:
+# 	aes_128
+# End time: 15:49:54 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:49:54 on Apr 12,2026
+# vlog -incr ../tb/tb_top.sv 
+# -- Compiling interface aes_interface
+# -- Compiling package tb_top_sv_unit
+# -- Compiling program test
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 15:49:54 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -c -novopt work.tb_top 
+# Start time: 15:49:54 on Apr 12,2026
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# //  Questa Sim-64
+# //  Version 10.6_1 linux_x86_64 Jan 30 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.tb_top_sv_unit
+# Loading work.tb_top
+# Loading work.aes_interface
+# Loading work.test
+# Loading work.aes_128
+# Loading work.expand_key_128
+# Loading work.S4
+# Loading work.S
+# Loading work.one_round
+# Loading work.table_lookup
+# Loading work.T
+# Loading work.xS
+# Loading work.final_round
+# [ Driver ] AES Core Reset Started...
+# [ Driver ] AES Core Reset Completed.
+# --------------------------------
+# [ Environment ] 100% of transactions driven. Stress Test Complete!
+# --------------------------------
+# ** Note: $stop    : ../tb/aes_environment.sv(56)
+#    Time: 460095 ns  Iteration: 1  Instance: :tb_top:t1
+# Break in Task tb_top_sv_unit:aes_environment::run at ../tb/aes_environment.sv line 56
+# Stopped at ../tb/aes_environment.sv line 56
+# End time: 15:50:00 on Apr 12,2026, Elapsed time: 0:00:06
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:00 on Apr 12,2026
+# vlog -incr ../rtl/table.sv 
+# -- Compiling module table_lookup
+# -- Compiling module S4
+# -- Compiling module T
+# -- Compiling module S
+# -- Compiling module xS
+# 
+# Top level modules:
+# 	table_lookup
+# 	S4
+# End time: 15:50:00 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:00 on Apr 12,2026
+# vlog -incr ../rtl/round.sv 
+# -- Compiling module one_round
+# -- Compiling module final_round
+# 
+# Top level modules:
+# 	one_round
+# 	final_round
+# End time: 15:50:00 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:00 on Apr 12,2026
+# vlog -incr ../rtl/aes_128_direct_key_leak.sv 
+# -- Compiling module aes_128
+# -- Compiling module expand_key_128
+# 
+# Top level modules:
+# 	aes_128
+# End time: 15:50:00 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:00 on Apr 12,2026
+# vlog -incr ../tb/tb_top.sv 
+# -- Compiling interface aes_interface
+# -- Compiling package tb_top_sv_unit
+# -- Compiling program test
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 15:50:01 on Apr 12,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim -c -novopt work.tb_top 
+# Start time: 15:50:01 on Apr 12,2026
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.tb_top_sv_unit
+# Loading work.tb_top
+# Loading work.aes_interface
+# Loading work.test
+# Loading work.aes_128
+# Loading work.expand_key_128
+# Loading work.S4
+# Loading work.S
+# Loading work.one_round
+# Loading work.table_lookup
+# Loading work.T
+# Loading work.xS
+# Loading work.final_round
+# [ Driver ] AES Core Reset Started...
+# [ Driver ] AES Core Reset Completed.
+# --------------------------------
+# [ Environment ] 100% of transactions driven. Stress Test Complete!
+# --------------------------------
+# ** Note: $stop    : ../tb/aes_environment.sv(56)
+#    Time: 460095 ns  Iteration: 1  Instance: :tb_top:t1
+# Break in Task tb_top_sv_unit:aes_environment::run at ../tb/aes_environment.sv line 56
+# Stopped at ../tb/aes_environment.sv line 56
+# End time: 15:50:07 on Apr 12,2026, Elapsed time: 0:00:06
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:08 on Apr 12,2026
+# vlog -incr ../rtl/table.sv 
+# -- Compiling module table_lookup
+# -- Compiling module S4
+# -- Compiling module T
+# -- Compiling module S
+# -- Compiling module xS
+# 
+# Top level modules:
+# 	table_lookup
+# 	S4
+# End time: 15:50:08 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:08 on Apr 12,2026
+# vlog -incr ../rtl/round.sv 
+# -- Compiling module one_round
+# -- Compiling module final_round
+# 
+# Top level modules:
+# 	one_round
+# 	final_round
+# End time: 15:50:08 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:08 on Apr 12,2026
+# vlog -incr ../rtl/aes_128_lsb.sv 
+# -- Compiling module aes_128
+# -- Compiling module expand_key_128
+# 
+# Top level modules:
+# 	aes_128
+# End time: 15:50:08 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:09 on Apr 12,2026
+# vlog -incr ../tb/tb_top.sv 
+# -- Compiling interface aes_interface
+# -- Compiling package tb_top_sv_unit
+# -- Compiling program test
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 15:50:09 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -c -novopt work.tb_top 
+# Start time: 15:50:09 on Apr 12,2026
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.tb_top_sv_unit
+# Loading work.tb_top
+# Loading work.aes_interface
+# Loading work.test
+# Loading work.aes_128
+# Loading work.expand_key_128
+# Loading work.S4
+# Loading work.S
+# Loading work.one_round
+# Loading work.table_lookup
+# Loading work.T
+# Loading work.xS
+# Loading work.final_round
+# [ Driver ] AES Core Reset Started...
+# [ Driver ] AES Core Reset Completed.
+# --------------------------------
+# [ Environment ] 100% of transactions driven. Stress Test Complete!
+# --------------------------------
+# ** Note: $stop    : ../tb/aes_environment.sv(56)
+#    Time: 460095 ns  Iteration: 1  Instance: :tb_top:t1
+# Break in Task tb_top_sv_unit:aes_environment::run at ../tb/aes_environment.sv line 56
+# Stopped at ../tb/aes_environment.sv line 56
+# End time: 15:50:16 on Apr 12,2026, Elapsed time: 0:00:07
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:16 on Apr 12,2026
+# vlog -incr ../rtl/table.sv 
+# -- Compiling module table_lookup
+# -- Compiling module S4
+# -- Compiling module T
+# -- Compiling module S
+# -- Compiling module xS
+# 
+# Top level modules:
+# 	table_lookup
+# 	S4
+# End time: 15:50:16 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:16 on Apr 12,2026
+# vlog -incr ../rtl/round.sv 
+# -- Compiling module one_round
+# -- Compiling module final_round
+# 
+# Top level modules:
+# 	one_round
+# 	final_round
+# End time: 15:50:16 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:16 on Apr 12,2026
+# vlog -incr ../rtl/aes_timebomb_data.sv 
+# -- Compiling module aes_128
+# -- Compiling module expand_key_128
+# 
+# Top level modules:
+# 	aes_128
+# End time: 15:50:16 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:16 on Apr 12,2026
+# vlog -incr ../tb/tb_top.sv 
+# -- Compiling interface aes_interface
+# -- Compiling package tb_top_sv_unit
+# -- Compiling program test
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 15:50:16 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -c -novopt work.tb_top 
+# Start time: 15:50:16 on Apr 12,2026
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.tb_top_sv_unit
+# Loading work.tb_top
+# Loading work.aes_interface
+# Loading work.test
+# Loading work.aes_128
+# Loading work.expand_key_128
+# Loading work.S4
+# Loading work.S
+# Loading work.one_round
+# Loading work.table_lookup
+# Loading work.T
+# Loading work.xS
+# Loading work.final_round
+# [ Driver ] AES Core Reset Started...
+# [ Driver ] AES Core Reset Completed.
+# --------------------------------
+# [ Environment ] 100% of transactions driven. Stress Test Complete!
+# --------------------------------
+# ** Note: $stop    : ../tb/aes_environment.sv(56)
+#    Time: 460095 ns  Iteration: 1  Instance: :tb_top:t1
+# Break in Task tb_top_sv_unit:aes_environment::run at ../tb/aes_environment.sv line 56
+# Stopped at ../tb/aes_environment.sv line 56
+# End time: 15:50:22 on Apr 12,2026, Elapsed time: 0:00:06
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:22 on Apr 12,2026
+# vlog -incr ../rtl/table.sv 
+# -- Compiling module table_lookup
+# -- Compiling module S4
+# -- Compiling module T
+# -- Compiling module S
+# -- Compiling module xS
+# 
+# Top level modules:
+# 	table_lookup
+# 	S4
+# End time: 15:50:22 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:22 on Apr 12,2026
+# vlog -incr ../rtl/round.sv 
+# -- Compiling module one_round
+# -- Compiling module final_round
+# 
+# Top level modules:
+# 	one_round
+# 	final_round
+# End time: 15:50:22 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:22 on Apr 12,2026
+# vlog -incr ../rtl/aes_timebomb_keyleak.sv 
+# -- Compiling module aes_128
+# -- Compiling module expand_key_128
+# 
+# Top level modules:
+# 	aes_128
+# End time: 15:50:22 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:22 on Apr 12,2026
+# vlog -incr ../tb/tb_top.sv 
+# -- Compiling interface aes_interface
+# -- Compiling package tb_top_sv_unit
+# -- Compiling program test
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 15:50:23 on Apr 12,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim -c -novopt work.tb_top 
+# Start time: 15:50:23 on Apr 12,2026
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.tb_top_sv_unit
+# Loading work.tb_top
+# Loading work.aes_interface
+# Loading work.test
+# Loading work.aes_128
+# Loading work.expand_key_128
+# Loading work.S4
+# Loading work.S
+# Loading work.one_round
+# Loading work.table_lookup
+# Loading work.T
+# Loading work.xS
+# Loading work.final_round
+# [ Driver ] AES Core Reset Started...
+# [ Driver ] AES Core Reset Completed.
+# --------------------------------
+# [ Environment ] 100% of transactions driven. Stress Test Complete!
+# --------------------------------
+# ** Note: $stop    : ../tb/aes_environment.sv(56)
+#    Time: 460095 ns  Iteration: 1  Instance: :tb_top:t1
+# Break in Task tb_top_sv_unit:aes_environment::run at ../tb/aes_environment.sv line 56
+# Stopped at ../tb/aes_environment.sv line 56
+# End time: 15:50:28 on Apr 12,2026, Elapsed time: 0:00:05
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:29 on Apr 12,2026
+# vlog -incr ../rtl/table.sv 
+# -- Compiling module table_lookup
+# -- Compiling module S4
+# -- Compiling module T
+# -- Compiling module S
+# -- Compiling module xS
+# 
+# Top level modules:
+# 	table_lookup
+# 	S4
+# End time: 15:50:29 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:29 on Apr 12,2026
+# vlog -incr ../rtl/round.sv 
+# -- Compiling module one_round
+# -- Compiling module final_round
+# 
+# Top level modules:
+# 	one_round
+# 	final_round
+# End time: 15:50:29 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:29 on Apr 12,2026
+# vlog -incr ../rtl/aes_fsm.sv 
+# -- Compiling module aes_128
+# -- Compiling module expand_key_128
+# 
+# Top level modules:
+# 	aes_128
+# End time: 15:50:29 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:29 on Apr 12,2026
+# vlog -incr ../tb/tb_top.sv 
+# -- Compiling interface aes_interface
+# -- Compiling package tb_top_sv_unit
+# -- Compiling program test
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 15:50:29 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -c -novopt work.tb_top 
+# Start time: 15:50:29 on Apr 12,2026
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.tb_top_sv_unit
+# Loading work.tb_top
+# Loading work.aes_interface
+# Loading work.test
+# Loading work.aes_128
+# Loading work.expand_key_128
+# Loading work.S4
+# Loading work.S
+# Loading work.one_round
+# Loading work.table_lookup
+# Loading work.T
+# Loading work.xS
+# Loading work.final_round
+# [ Driver ] AES Core Reset Started...
+# [ Driver ] AES Core Reset Completed.
+# --------------------------------
+# [ Environment ] 100% of transactions driven. Stress Test Complete!
+# --------------------------------
+# ** Note: $stop    : ../tb/aes_environment.sv(56)
+#    Time: 460095 ns  Iteration: 1  Instance: :tb_top:t1
+# Break in Task tb_top_sv_unit:aes_environment::run at ../tb/aes_environment.sv line 56
+# Stopped at ../tb/aes_environment.sv line 56
+# End time: 15:50:37 on Apr 12,2026, Elapsed time: 0:00:08
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:38 on Apr 12,2026
+# vlog -incr ../rtl/table.sv 
+# -- Compiling module table_lookup
+# -- Compiling module S4
+# -- Compiling module T
+# -- Compiling module S
+# -- Compiling module xS
+# 
+# Top level modules:
+# 	table_lookup
+# 	S4
+# End time: 15:50:38 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:38 on Apr 12,2026
+# vlog -incr ../rtl/round.sv 
+# -- Compiling module one_round
+# -- Compiling module final_round
+# 
+# Top level modules:
+# 	one_round
+# 	final_round
+# End time: 15:50:38 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:38 on Apr 12,2026
+# vlog -incr ../rtl/aes_128_comb_data_leak.sv 
+# -- Compiling module aes_128
+# -- Compiling module expand_key_128
+# 
+# Top level modules:
+# 	aes_128
+# End time: 15:50:38 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.6_1 Compiler 2017.01 Jan 30 2017
+# Start time: 15:50:38 on Apr 12,2026
+# vlog -incr ../tb/tb_top.sv 
+# -- Compiling interface aes_interface
+# -- Compiling package tb_top_sv_unit
+# -- Compiling program test
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 15:50:38 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -c -novopt work.tb_top 
+# Start time: 15:50:38 on Apr 12,2026
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading sv_std.std
+# Loading work.tb_top_sv_unit
+# Loading work.tb_top
+# Loading work.aes_interface
+# Loading work.test
+# Loading work.aes_128
+# Loading work.expand_key_128
+# Loading work.S4
+# Loading work.S
+# Loading work.one_round
+# Loading work.table_lookup
+# Loading work.T
+# Loading work.xS
+# Loading work.final_round
+# [ Driver ] AES Core Reset Started...
+# [ Driver ] AES Core Reset Completed.
+# --------------------------------
+# [ Environment ] 100% of transactions driven. Stress Test Complete!
+# --------------------------------
+# ** Note: $stop    : ../tb/aes_environment.sv(56)
+#    Time: 460095 ns  Iteration: 1  Instance: :tb_top:t1
+# Break in Task tb_top_sv_unit:aes_environment::run at ../tb/aes_environment.sv line 56
+# Stopped at ../tb/aes_environment.sv line 56
+# End time: 15:50:44 on Apr 12,2026, Elapsed time: 0:00:06
+# Errors: 0, Warnings: 1
