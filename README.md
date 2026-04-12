@@ -11,7 +11,7 @@ Project Hee-Haw is a non-invasive, architecture-agnostic security auditing frame
 
 ## The Nomenclature: Why 'Hee-Haw'?
 
-In hardware security, malicious logic insertions are termed 'Trojans' because they disguise themselves within the legitimate 'Horse' (the standard AES core). However, from a Machine Learning perspective, a Trojan that leaves a detectable mathematical footprint is not a stealthy warhorse,it is a donkey making a loud, intrusive noise in a high-entropy bitstream.
+In hardware security, malicious logic insertions are termed 'Trojans' because they disguise themselves within the legitimate 'Horse' (the standard AES core). However, from a Machine Learning perspective, a Trojan that leaves a detectable mathematical footprint is not a stealthy warhorse, it is a donkey making a loud, intrusive noise in a high-entropy bitstream.
 
 The name 'Hee-Haw' reflects the reality that under rigorous mathematical auditing, a Trojan cannot remain silent; its anomalous structural and temporal signature 'brays' its presence to the ML pipeline.
 
