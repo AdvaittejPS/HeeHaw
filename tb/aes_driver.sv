@@ -40,14 +40,30 @@ class aes_driver;
             vif.driver_cb.state <= trans.state;
             vif.driver_cb.key   <= trans.key;
             
-            // In your old testbench, we waited ~220ns (22 clock cycles) for the AES 
-            // math to finish before sending the next packet. We do the same here.
+            // Wait 22 clock cycles for the AES math to finish processing
             repeat(22) @(vif.driver_cb);
             
-            no_transactions++;
+            // Capture the actual output from the chip
+            trans.out = vif.driver_cb.out;
             
-            // Uncomment below if you want to print every driven packet
-            // trans.display("[ Driver ]");
+            // =======================================================
+            // THE SELF-CHECKING TRAP (Observe & Report Mode)
+            // =======================================================
+            if (trans.out !== trans.expected_out) begin
+                $display("\n========================================================");
+                $display("        🚨 [!!! TROJAN PAYLOAD DETECTED !!!] 🚨         ");
+                $display("========================================================");
+                $display("Transaction #%0d was corrupted by malicious logic!", no_transactions);
+                $display("Expected : %h", trans.expected_out);
+                $display("Actual   : %h", trans.out);
+                $display("--> Logging anomaly and continuing simulation to preserve VCD integrity...");
+                $display("========================================================\n");
+                
+                // NOTICE: There is no $stop command here anymore.
+                // The simulation will continue so the ML pipeline gets all 2000 cycles of data!
+            end
+            
+            no_transactions++;
         end
     endtask
 
