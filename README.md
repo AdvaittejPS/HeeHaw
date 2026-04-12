@@ -38,7 +38,7 @@ To prove that an anomaly is a malicious payload, the environment utilizes a self
 
 For structural auditing, the testbench generates massive VCD logs during the 2,000-packet stress test. A custom Python parser extracts a 2D feature vector $V_i$ for every logic gate:
 
-- $V_i = \begin{bmatrix} \alpha_i \\ \tau_i \end{bmatrix}$
+$$V_i = \begin{bmatrix} \alpha_i \\ \tau_i \end{bmatrix}$$
 - $\alpha_i$ (Switching Activity): Total signal transitions (entropy).
 - $\tau_i$ (Temporal Anchor): Timestamp of the final transition.
 
