@@ -23,30 +23,24 @@ The framework operates on a dual-verification security architecture: Functional 
 
 The core is an AES-128 implementation in SystemVerilog. We engineered several stealthy threat models:
 
-FSM Hijack (Infected 05): A 'Combination Lock' trigger that activates only upon receiving a specific sequence of three 128-bit plaintexts.
-
-Sequential Time-Bomb (Infected 04): A Trojan utilizing an internal counter to trigger a payload after exactly 1,500 clock cycles.
-
-Combinational Leak (Infected 06): A direct trigger that corrupts ciphertext when a specific 128-bit input state is detected.
+- FSM Hijack (Infected 05): A 'Combination Lock' trigger that activates only upon receiving a specific sequence of three 128-bit plaintexts.
+- Sequential Time-Bomb (Infected 04): A Trojan utilizing an internal counter to trigger a payload after exactly 1,500 clock cycles.
+- Combinational Leak (Infected 06): A direct trigger that corrupts ciphertext when a specific 128-bit input state is detected.
 
 **2. Functional Verification (Closed-Loop C-Model)**
 
 To prove that an anomaly is a malicious payload, the environment utilizes a self-checking Object-Oriented SystemVerilog (OOSV) testbench.
 
-Golden Truth Generation: A native C-model (gen_test_case.c + aes.c) generates 2,000 high-entropy random test vectors. It calculates the absolute mathematical ciphertext and saves it to golden_vectors.txt.
-
-The Self-Checking Trap: The SV aes_generator reads these vectors. The aes_driver feeds the hardware and performs a real-time comparison. If a Trojan activates, the driver flags the mismatch in the console but continues the simulation (Observe & Report) to ensure the VCD file remains uncorrupted for the AI.
+- Golden Truth Generation: A native C-model (gen_test_case.c + aes.c) generates 2,000 high-entropy random test vectors. It calculates the absolute mathematical ciphertext and saves it to golden_vectors.txt.
+- The Self-Checking Trap: The SV aes_generator reads these vectors. The aes_driver feeds the hardware and performs a real-time comparison. If a Trojan activates, the driver flags the mismatch in the console but continues the simulation (Observe & Report) to ensure the VCD file remains uncorrupted for the AI.
 
 **3. Structural Verification (ML Pipeline)**
 
 For structural auditing, the testbench generates massive VCD logs during the 2,000-packet stress test. A custom Python parser extracts a 2D feature vector $V_i$ for every logic gate:
 
-
-$$V_i = \begin{bmatrix} \alpha_i \\ \tau_i \end{bmatrix}$$
-
-$\alpha_i$ (Switching Activity): Total signal transitions (entropy).
-
-$\tau_i$ (Temporal Anchor): Timestamp of the final transition.
+- $$V_i = \begin{bmatrix} \alpha_i \\ \tau_i \end{bmatrix}$$
+- $\alpha_i$ (Switching Activity): Total signal transitions (entropy).
+- $\tau_i$ (Temporal Anchor): Timestamp of the final transition.
 
 **4. Anomaly Detection (Isolation Forest)**
 
