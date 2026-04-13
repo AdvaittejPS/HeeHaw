@@ -58,7 +58,7 @@ Project_HeeHaw/
 
 ## Execution Guide (Mentor Server)
 
-**1. Generate the Mathematical Truth**
+**1. Generate the Golden Vectors**
 
 Compile and run the C-model inside the sim/ folder:
 ```
