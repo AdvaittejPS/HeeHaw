@@ -4,7 +4,7 @@ This repository contains the Machine Learning pipeline (Isolation Forest) design
 
 Click the **Open in Colab** button above to run the AI directly in your browser against the raw hardware switching data!
 
-# Project Hee-Haw: Unsupervised ML for Stealthy Hardware Trojan Detection
+# Project Hee-Haw: Unsupervised ML for Stealthy Hardware Trojan Detection via Temporal VCD Activity Profiling
 _Prepared for the Scripting Languages and Verification course instructed by Dr. Jyotishman Saikia._
 
 Project Hee-Haw is a non-invasive, architecture-agnostic security auditing framework designed to detect dormant Hardware Trojans (HT) hidden within digital IP cores. Utilizing an AES-128 cryptographic engine as the Device Under Test (DUT), this project leverages temporal Value Change Dump (VCD) activity profiling and Unsupervised Machine Learning (Isolation Forests) to identify malicious logic without requiring a trusted 'Structural Golden Model.'
