@@ -67,7 +67,6 @@ HeeHaw/
 │   └── infected_06_comb_leak.vcd.gz
 ├── rtl/
 │   ├── aes_128.sv
-│   ├── aes_128.v~
 │   ├── aes_128_comb_data_leak.sv
 │   ├── aes_128_direct_key_leak.sv
 │   ├── aes_128_lsb.sv
@@ -84,7 +83,6 @@ HeeHaw/
 │   ├── gen_test_case.c
 │   ├── run_baseline.do
 │   ├── run_baseline.do~
-│   ├── sbox.h
 │   ├── simulate_all.do
 │   └── simulation.do
 ├── sim/
@@ -97,7 +95,6 @@ HeeHaw/
     ├── aes_test.sv
     ├── aes_transaction.sv
     ├── tb_top.sv
-    └── test_aes_128.v~
 ```
 ## Execution Guide (Mentor Server)
 
