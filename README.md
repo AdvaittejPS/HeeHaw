@@ -55,7 +55,50 @@ Project_HeeHaw/
 ├── sim/             # Execution folder (C-Generator & SV Simulation)
 └── activity_logs/   # Generated VCD profiles for ML analysis
 ```
-
+```
+HeeHaw/
+├── activity_logs/
+│   ├── clean_baseline.vcd.gz
+│   ├── infected_01_direct_key.vcd.gz
+│   ├── infected_02_lsb_leak.vcd.gz
+│   ├── infected_03_timebomb_data.vcd.gz
+│   ├── infected_04_timebomb_key.vcd.gz
+│   ├── infected_05_fsm.vcd.gz
+│   └── infected_06_comb_leak.vcd.gz
+├── rtl/
+│   ├── aes_128.sv
+│   ├── aes_128.v~
+│   ├── aes_128_comb_data_leak.sv
+│   ├── aes_128_direct_key_leak.sv
+│   ├── aes_128_lsb.sv
+│   ├── aes_fsm.sv
+│   ├── aes_timebomb_data.sv
+│   ├── aes_timebomb_keyleak.sv
+│   ├── round.sv
+│   └── table.sv
+├── scripts/
+│   ├── README
+│   ├── aes.c
+│   ├── detect_trojan.py
+│   ├── gen_aes_data
+│   ├── gen_test_case.c
+│   ├── run_baseline.do
+│   ├── run_baseline.do~
+│   ├── sbox.h
+│   ├── simulate_all.do
+│   └── simulation.do
+├── sim/
+└── tb/
+    ├── Read_Me.txt
+    ├── aes_driver.sv
+    ├── aes_environment.sv
+    ├── aes_generator.sv
+    ├── aes_interface.sv
+    ├── aes_test.sv
+    ├── aes_transaction.sv
+    ├── tb_top.sv
+    └── test_aes_128.v~
+```
 ## Execution Guide (Mentor Server)
 
 **1. Generate the Golden Vectors**
